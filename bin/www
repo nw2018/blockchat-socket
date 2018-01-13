@@ -30,14 +30,7 @@ server.on('listening', onListening);
  * Bind socket.io to express server
  */
 
-let io = require('socket.io')(server, {
-    path: '/',
-    serveClient: false,
-    // below are engine.IO options
-    pingInterval: 10000,
-    pingTimeout: 5000,
-    cookie: false
-});
+let io = require('socket.io')(server);
 
 io.on("connection", socketApp);
 

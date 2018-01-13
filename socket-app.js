@@ -1,6 +1,5 @@
 
 
-module.exports = function(socket){
-
+module.exports = function (socket) {
 
 };
