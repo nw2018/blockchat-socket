@@ -17,7 +17,7 @@
   socket.on('room_info',(msg)=>{console.log(msg)})
   socket.on('emotion',(msg)=>{console.log(msg)})
   $('#btn-1').click((e)=>{
-    socket.emit('send_msg',{text:"this is msg",needEmotion:true,id:"user_id"});
+    socket.emit('send_msg',{text:"this is msg",needEmotion:true,hash:"hashed_user_id"});
   })
   $('#btn-2').click((e)=>{
     socket.emit('find_room',{location:{lat: Number($("#lat").val()), lng: Number($("#lng").val())}})
