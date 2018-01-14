@@ -3,8 +3,16 @@
 </head>
 <body>
 helloworld
+<Button id="btn-1">click me</Button>
 <script src="/socket.io/socket.io.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
   var socket = io();
+  socket.emit('find_room',{location:'UBC'})
+  socket.on('sys',(msg)=>{console.log('[sys]'+msg)})
+  socket.on('normal',(msg)=>{console.log('[normal]'+msg)})
+  $('#btn-1').click((e)=>{
+    socket.emit('send_msg',{text:"this is msg"});
+  })
 </script>
 </body>

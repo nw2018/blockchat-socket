@@ -32,7 +32,7 @@ server.on('listening', onListening);
 
 let io = require('socket.io')(server);
 
-io.on("connection", socketApp);
+io.on("connection", socketApp.bind(null,io));
 
 
 /**
