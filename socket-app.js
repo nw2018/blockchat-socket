@@ -3,7 +3,8 @@ let handlers = require('./lib/handlers');
 let socketApp = (IO,socket) =>{
   let user = {
     name:"alex",
-    roomID:""
+    roomID:"",
+    location:null
   };
   //connect
   handlers.onConnect();
