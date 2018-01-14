@@ -9,8 +9,8 @@ helloworld
 <script>
   var socket = io();
   socket.emit('find_room',{location:'UBC'})
-  socket.on('sys',(msg)=>{console.log('[sys]'+msg)})
-  socket.on('normal',(msg)=>{console.log('[normal]'+msg)})
+  socket.on('sys',(msg)=>{console.log('[sys]'+msg.text)})
+  socket.on('normal',(msg)=>{console.log('[normal]'+msg.text)})
   $('#btn-1').click((e)=>{
     socket.emit('send_msg',{text:"this is msg"});
   })
