@@ -4,6 +4,7 @@
 <body>
 <button id="btn-1">send msg</button>
 <button id="btn-2">find room</button>
+<button id="btn-3">get room info</button>
 <label for="lat">lat</label>
 <input id="lat" value="49.2807513"/>
 <label for="lng">lng</label>
@@ -14,11 +15,15 @@
   var socket = io();
   socket.on('sys',(msg)=>{console.log('[sys]'+msg.text)})
   socket.on('normal',(msg)=>{console.log('[normal]'+msg.text)})
+  socket.on('room_info',(msg)=>{console.log(msg)})
   $('#btn-1').click((e)=>{
     socket.emit('send_msg',{text:"this is msg"});
   })
   $('#btn-2').click((e)=>{
     socket.emit('find_room',{location:{lat: Number($("#lat").val()), lng: Number($("#lng").val())}})
+  })
+  $('#btn-3').click((e)=>{
+    socket.emit('get_info');
   })
 </script>
 </body>
