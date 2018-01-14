@@ -2,17 +2,23 @@
 
 </head>
 <body>
-helloworld
-<Button id="btn-1">click me</Button>
+<button id="btn-1">send msg</button>
+<button id="btn-2">find room</button>
+<label for="lat">lat</label>
+<input id="lat" value="49.2807513"/>
+<label for="lng">lng</label>
+<input id="lng" value="-123.1152712"/>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
   var socket = io();
-  socket.emit('find_room',{location:'UBC'})
   socket.on('sys',(msg)=>{console.log('[sys]'+msg.text)})
   socket.on('normal',(msg)=>{console.log('[normal]'+msg.text)})
   $('#btn-1').click((e)=>{
     socket.emit('send_msg',{text:"this is msg"});
+  })
+  $('#btn-2').click((e)=>{
+    socket.emit('find_room',{location:{lat: Number($("#lat").val()), lng: Number($("#lng").val())}})
   })
 </script>
 </body>
